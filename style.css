@@ -40,41 +40,104 @@ header h1 {
     outline: none;
 }
 
-#post {
+/* --- Buttons --- */
+#post, .comment-btn {
     background-color: #1da1f2;
     color: white;
     border: none;
     border-radius: 20px;
-    padding: 10px 20px;
+    padding: 8px 16px;
     font-weight: bold;
     cursor: pointer;
+    transition: background-color 0.2s ease;
 }
 
-#post:hover {
+#post:hover, .comment-btn:hover {
     background-color: #1a91da;
 }
 
 #posts {
-    padding: 10px;
+    padding: 0; /* Let individual posts handle internal padding */
 }
 
-/* We will use these classes later when we render dynamically */
+/* --- Dynamic Post Layout --- */
 .post {
-    padding: 15px;
+    padding: 20px;
     border-bottom: 1px solid #e1e8ed;
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .post-text {
     font-size: 16px;
-    margin-top: 0;
+    margin: 0;
+    color: #14171a;
+    line-height: 1.4;
 }
 
-.delete {
-    color: #e0245e;
+/* --- Comments Section --- */
+.comments-container {
+    background-color: #f5f8fa;
+    border-radius: 8px;
+    padding: 12px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.comment {
+    font-size: 14px;
+    color: #2b2b2b;
+    padding: 6px 10px;
+    background: #ffffff;
+    border-radius: 6px;
+    border: 1px solid #e1e8ed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* --- Comment Inputs --- */
+.comment-input-wrapper {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.comment-input {
+    flex-grow: 1;
+    border: 1px solid #e1e8ed;
+    border-radius: 20px;
+    padding: 6px 12px;
+    font-size: 14px;
+    outline: none;
+}
+
+.comment-input:focus {
+    border-color: #1da1f2;
+}
+
+/* --- Delete Buttons --- */
+.delete, .delete-comment {
+    color: #657786;
     cursor: pointer;
     background: none;
     border: none;
     font-size: 14px;
-    padding: 0;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.delete:hover, .delete-comment:hover {
+    color: #e0245e;
+    background-color: #feedf2;
 }

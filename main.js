@@ -5,6 +5,10 @@ renderer.renderPosts(tweeter.getPosts());
 const tweetBtn = document.querySelector("#post")
 tweetBtn.addEventListener("click", ()=>{
     const newPostTxt = document.querySelector('#input').value
+    if (newPostTxt === "") {
+        alert("Please write something before posting!"); // Or a nicer custom error message
+        return;
+    }
     tweeter.addPost(newPostTxt)
     renderer.renderPosts(tweeter.getPosts())
     document.querySelector('#input').value = ""
@@ -28,6 +32,10 @@ postsContainer.addEventListener("click", function(event) {
         const postId = postElement.dataset.id
         const inputElement = postElement.querySelector(".comment-input") 
         const commentText = inputElement.value
+        if (commentText === "") {
+            alert("Please write something before commenting!"); // Or a nicer custom error message
+            return;
+        }
         tweeter.addComment(postId, commentText)
         renderer.renderPosts(tweeter.getPosts())
         inputElement.value=""
