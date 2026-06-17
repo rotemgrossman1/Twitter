@@ -93,7 +93,7 @@ const Tweeter = function() {
     }
 }
 
-const tweeter = Tweeter();
+// const tweeter = Tweeter();
 
 // // Test adding a post
 // tweeter.addPost("This is my own post!");
