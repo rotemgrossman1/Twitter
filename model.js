@@ -27,7 +27,7 @@ const Tweeter = function() {
     }
     //     commentIdCounter - to count total comments
     const commentIdCounter = function(){
-        return commentIdCounter
+        return commentCounter
     }
     const findPost = function(postId){//returns index of post
         for(let i = 0; i < _posts.length; i++){
@@ -37,6 +37,15 @@ const Tweeter = function() {
         }
         return new Error(`Post ${postId} not found`)
     }
+    const findComment = function(commentId, comments){//returns index of post
+        for(let i = 0; i < comments.length; i++){
+            if(comments[i].id === commentId){
+                return i
+            }
+        }
+        return new Error(`Post ${postId} not found`)
+    }
+
 
 
     const getPosts = () => _posts; // Public method
@@ -54,10 +63,32 @@ const Tweeter = function() {
     const removePost = (postID) => {
         const indexToDelete = findPost(postID)
         _posts.splice(indexToDelete, 1)
+        postCounter--
     }
+
+    const addComment = (postID, text) => {
+        const indexToAdd = findPost(postID)
+        const newComId = 'c' + commentCounter
+        const newcomment ={
+            id: newComId,
+            text: text
+        }
+        _posts[indexToAdd].comments.push(newcomment)
+        commentCounter++
+    }
+
+    const removeComment = (postID, commentId) => {
+        const indexToRemove = findPost(postID)
+        const commentIdxToRemove = findComment(commentId, _posts[indexToRemove].comments)
+         _posts[indexToRemove].comments.splice(commentIdxToRemove, 1)
+        commentCounter--
+    }
+    
     return {
         getPosts: getPosts, 
         addPost: addPost,
-        removePost: removePost
+        removePost: removePost, 
+        addComment: addComment,
+        removeComment: removeComment
     }
 }
