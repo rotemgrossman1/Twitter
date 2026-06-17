@@ -63,7 +63,7 @@ const Tweeter = function() {
     const removePost = (postID) => {
         const indexToDelete = findPost(postID)
         _posts.splice(indexToDelete, 1)
-        postCounter--
+        // postCounter--
     }
 
     const addComment = (postID, text) => {
@@ -81,7 +81,7 @@ const Tweeter = function() {
         const indexToRemove = findPost(postID)
         const commentIdxToRemove = findComment(commentId, _posts[indexToRemove].comments)
          _posts[indexToRemove].comments.splice(commentIdxToRemove, 1)
-        commentCounter--
+        // commentCounter--
     }
     
     return {
@@ -92,3 +92,24 @@ const Tweeter = function() {
         removeComment: removeComment
     }
 }
+
+const tweeter = Tweeter();
+
+// // Test adding a post
+// tweeter.addPost("This is my own post!");
+// console.log(tweeter.getPosts());
+// // Should add: {text: "This is my own post!", id: "p3", comments: []}
+
+// // // Test removing a post
+// tweeter.removePost("p1");
+// console.log(tweeter.getPosts());
+// // Should only have two posts left
+
+// // // Test adding comments
+// tweeter.addComment("p3", "Damn straight it is!");
+// tweeter.addComment("p2", "Second the best!");
+// console.log(tweeter.getPosts());
+
+// // Test removing comments
+// tweeter.removeComment("p2", "c6");
+// console.log(tweeter.getPosts());
